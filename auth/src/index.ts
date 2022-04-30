@@ -1,36 +1,33 @@
-import mongoose from "mongoose";
-import {app} from "./app";
-
+import mongoose from 'mongoose';
+import { app } from './app';
 
 const start = async () => {
-  
-  
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
   }
   if (!process.env.MONGO_URI) {
     throw new Error('MONGO_URI must be defined');
   }
-=======
-const start = async() => {
+
+  const start = async () => {
     if (!process.env.JWT_KEY) {
-        throw new Error("JWT_KEY must be defined");
+      throw new Error('JWT_KEY must be defined');
     }
     if (!process.env.MONGO_URI) {
-        throw new Error("MONGO_URI must be defined");
+      throw new Error('MONGO_URI must be defined');
     }
 
-
     try {
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log("connected to mongodb");
+      await mongoose.connect(process.env.MONGO_URI);
+      console.log('connected to mongodb');
     } catch (err) {
-        console.log(err);
+      console.log(err);
     }
 
     app.listen(3000, () => {
-        console.log("Server is running on port 3000");
+      console.log('Server is running on port 3000');
     });
+  };
 };
 
 start();
